@@ -8,6 +8,20 @@ FlowRouter.route('/', {
   },
 });
 
+FlowRouter.route('/login', {
+  name: 'Login_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Login_Page' });
+  },
+});
+
+FlowRouter.route('/signup', {
+  name: 'Sign_Up_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Sign_Up_Page' });
+  },
+});
+
 FlowRouter.route('/list', {
   name: 'List_Stuff_Page',
   action() {
