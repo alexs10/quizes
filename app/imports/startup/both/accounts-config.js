@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 if (Meteor.isClient) {
   Accounts.ui.config({
@@ -18,4 +19,9 @@ if (Meteor.isClient) {
     displayName: "Last Name"
   });
 
+  AccountsTemplates.configure({
+    onSubmitHook: function(error, state) {
+      FlowRouter.go("/");
+    }
+  })
 }

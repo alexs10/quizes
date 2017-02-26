@@ -22,6 +22,13 @@ FlowRouter.route('/signup', {
   },
 });
 
+FlowRouter.route('/sign-out', {
+  action: function() {
+    AccountsTemplates.logout();
+    FlowRouter.go("/");
+  }
+});
+
 FlowRouter.route('/list', {
   name: 'List_Stuff_Page',
   action() {
