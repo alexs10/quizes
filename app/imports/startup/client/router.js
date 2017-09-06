@@ -29,6 +29,13 @@ FlowRouter.route('/sign-out', {
   }
 });
 
+FlowRouter.route('/questions', {
+  name: 'Question_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Question_Page' });
+  }
+})
+
 FlowRouter.route('/list', {
   name: 'List_Stuff_Page',
   action() {

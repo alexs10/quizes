@@ -5,10 +5,24 @@
         Site Name Here
       </h1>
       <h2>Quick description of web app and its purpose</h2>
-      <div class="ui huge primary button">
-        Get Started
-        <i class="right arrow icon"></i>
-      </div>
+      {{#if loggedIn}}
+        {{#if hasActiveQuestionPool}}
+          <a class="ui huge primary button continue-questions" href="/questions">
+            Continue Questions
+            <i class="right arrow icon"></i>
+          </a>
+        {{else}}
+          <a class="ui huge primary button generate-questions" href="/questions">
+            Answer New Questions
+            <i class="right arrow icon"></i>
+          </a>
+        {{/if}}
+      {{else}}
+        <a class="ui huge primary button" href="/signup">
+          Get Started
+          <i class="right arrow icon"></i>
+        </a>
+      {{/if}}
     </div>
   </div>
 </template>

@@ -1,0 +1,21 @@
+<template name="Question">
+  <div class="ui form">
+    <h3>{{question.question}}</h3>
+    <div class="grouped fields">
+      {{#each augmentedAnswers}}
+        <div class="field">
+          <div class="ui checkbox {{isDisabled}}">
+            <input type="checkbox" {{isChecked}} class="hidden toggle-checked" name="answer">
+            <label>{{answer}}</label>
+          </div>
+          {{#if isAnswered}}
+            <div class="ui {{isCorrect(answer)}} message">
+              <p><i class="icon {{reasonIcon}}"></i>{{reason}}</p>
+            </div>
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  <div class="ui divider"></div>
+</template>

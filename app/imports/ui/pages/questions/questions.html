@@ -1,0 +1,9 @@
+<template name="Question_Page">
+  <div class="ui text container">
+    <ul>
+      {{#each questions}}
+        {{>Question question=this qpid=questionPoolId}}
+      {{/each}}
+    </ul>
+  </div>
+</template>

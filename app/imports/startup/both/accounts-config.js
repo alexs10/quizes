@@ -21,7 +21,9 @@ if (Meteor.isClient) {
 
   AccountsTemplates.configure({
     onSubmitHook: function(error, state) {
-      FlowRouter.go("/");
+      if (!error) {
+        FlowRouter.go("/");
+      }
     }
-  })
+  });
 }
