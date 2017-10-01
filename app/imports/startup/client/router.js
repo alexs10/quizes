@@ -29,12 +29,19 @@ FlowRouter.route('/sign-out', {
   }
 });
 
-FlowRouter.route('/questions', {
-  name: 'Question_Page',
+FlowRouter.route('/quizes/:questionPoolId/questions/:questionNumber', {
+  name: 'Quiz_Page',
   action() {
-    BlazeLayout.render('App_Body', { main: 'Question_Page' });
+    BlazeLayout.render('App_Body', { main: 'Quiz_Page' });
   }
-})
+});
+
+FlowRouter.route('/quizes/:questionPoolId/review/:questionNumber', {
+  name: 'Review_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Review_Page' });
+  }
+});
 
 FlowRouter.route('/list', {
   name: 'List_Stuff_Page',
@@ -44,9 +51,9 @@ FlowRouter.route('/list', {
 });
 
 FlowRouter.route('/add', {
-  name: 'Add_Stuff_Page',
+  name: 'Add_Quiz',
   action() {
-    BlazeLayout.render('App_Body', { main: 'Add_Stuff_Page' });
+    BlazeLayout.render('App_Body', { main: 'Add_Quiz' });
   },
 });
 

@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { _ } from 'lodash';
 
-Template.Question.helpers({
+Template.Question_Review.helpers({
   isCorrect(answer) {
     return this.isCorrect ? 'positive' : 'negative';
   },
@@ -44,7 +44,7 @@ Template.Question.helpers({
   }
 });
 
-Template.Question.events({
+Template.Question_Review.events({
   'click .ui.checkbox.input-ready'(event) {
     console.log('event')
     let index = _.findIndex(this.question.answers, (answer) => {
@@ -55,28 +55,19 @@ Template.Question.events({
   }
 })
 
-let context;
+Template.Question_Review.onRendered(function () {
+  var $elem = this.$('.checkbox');
 
-function submitQuestion(answerChoice) {
-  console.log(context)
-  console.log("submitting question: " + answerChoice);
-  console.log("qpid: " + context.qpid );
-  console.log("question: " + context.question._id );
+  context = this.data;
 
+  $elem.checkbox({
+    onChange: function () {
+      //$elem.addClass('disabled');
 
-}
+      $list = $(this).closest('.grouped').find('.checkbox');
 
-// Template.Question.onRendered(function () {
-//   var $elem = this.$('.checkbox');
-//
-//   context = this.data;
-//
-//   // $elem.checkbox({
-//   //   onChange: function () {
-//   //     $list = $(this).closest('.grouped').find('.checkbox');
-//   //
-//   //     //submitQuestion($list.filter(".checked").parent().index());
-//   //   }
-//   // });
-//
-// });
+      //submitQuestion($list.filter(".checked").parent().index());
+    }
+  });
+
+});

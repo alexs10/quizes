@@ -21,7 +21,6 @@ const questionSeeds = [
       reason: 'management said to save costs',
       isCorrect: false
     },],
-    answerChoice: -1
   },
   {
     question: 'This is a question',
@@ -42,15 +41,26 @@ const questionSeeds = [
       reason: 'its just an answer',
       isCorrect: false
     }],
-    answerChoice: -1
   },
 ];
+
+if (Meteor.is_server) {
+  Questions.allow({
+    'insert': (userId, doc) => {
+      return true;
+    }
+  })
+}
+
 
 /**
  * Initialize the Stuff collection if empty with seed data.
  */
+
+let counter = 0;
 while (Questions.find().count() <= 50) {
   _.each(questionSeeds, (question) => {
+    question.question = question.question + counter++;
     Questions.insert(question);
   });
 }

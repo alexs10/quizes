@@ -1,0 +1,89 @@
+<template name="Add_Quiz">
+  {{#if isAdmin}}
+    <div style="padding-top: 20px" class="ui content container">
+      <h1>Add a new question</h1>
+      <form class="ui form">
+        <div class="field">
+          <label>Question</label>
+          <input type="text" placeholder="Question" name="question">
+        </div>
+        <div class="ui divider"></div>
+        <div class="field">
+          <label>Answer 1</label>
+          <input type="text" placeholder="Answer 1" name="answer1">
+        </div>
+        <div class="field">
+          <label>Explanation 1</label>
+          <input type="text" placeholder="Explanation 1" name="explanation1">
+        </div>
+        <div class="field">
+          <div class="ui checkbox input-ready">
+            <input id="1" type="checkbox" name="checkbox1" class="hidden">
+            <label for="1">Is this answer correct?</label>
+          </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="field">
+          <label>Answer 2</label>
+          <input type="text" placeholder="Answer 2" name="answer2">
+        </div>
+        <div class="field">
+          <label>Explanation 2</label>
+          <input type="text" placeholder="Explanation 2" name="explanation2">
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input id="2" type="checkbox" name="checkbox2" tabindex="0" class="hidden">
+            <label for="2">Is this answer correct?</label>
+          </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="field">
+          <label>Answer 3</label>
+          <input type="text" placeholder="Answer 3" name="answer3">
+        </div>
+        <div class="field">
+          <label>Explanation 3</label>
+          <input type="text" placeholder="Explanation 3" name="explanation3">
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input id="3" type="checkbox" name="checkbox3" tabindex="0" class="hidden">
+            <label for="3">Is this answer correct?</label>
+          </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="field">
+          <label>Answer 4</label>
+          <input type="text" placeholder="Answer 4" name="answer4">
+        </div>
+        <div class="field">
+          <label>Explanation 4</label>
+          <input type="text" placeholder="Explanation 4" name="explanation4">
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input id="4" type="checkbox" name="checkbox4" tabindex="0" class="hidden">
+            <label for="4">Is this answer correct?</label>
+          </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="field">
+          <label>Answer 5</label>
+          <input type="text" placeholder="Answer 5" name="answer5">
+        </div>
+        <div class="field">
+          <label>Explanation 5</label>
+          <input type="text" placeholder="Explanation 5" name="explanation5">
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input id="5" type="checkbox" name="checkbox5" tabindex="0" class="hidden">
+            <label for="5">Is this answer correct?</label>
+          </div>
+        </div>
+        <button class="ui blue button" type="submit">Submit</button>
+      </form>
+    </div>
+  {{/if}}
+</template>

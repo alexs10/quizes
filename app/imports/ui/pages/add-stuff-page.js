@@ -1,7 +1,7 @@
 import { AutoForm } from 'meteor/aldeed:autoform';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Template } from 'meteor/templating';
-import { Stuff } from '../../api/stuff/stuff.js';
+import { Questions } from '../../api/questions/questions.js';
 
 /* eslint-disable object-shorthand, no-unused-vars */
 
@@ -23,7 +23,7 @@ AutoForm.hooks({
 });
 
 Template.Add_Stuff_Page.helpers({
-  stuffCollection() {
-    return Stuff;
+  questionsCollection() {
+    return Questions;
   },
 });

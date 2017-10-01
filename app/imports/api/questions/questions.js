@@ -5,6 +5,21 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 export const Questions = new Mongo.Collection('Questions');
 
+
+Meteor.methods({
+  //todo only return unanswerd questions
+  'Questions.insert'(question) {
+
+    if (!Meteor.userId() || !Roles.userIsInRole(Meteor.userId(), 'admin')) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    console.log('here')
+
+    return Questions.insert(question);
+  }
+});
+
 /**
  * Create the schema for Questions
  */
@@ -13,20 +28,20 @@ export const QuestionSchema = new SimpleSchema({
     label: 'Question',
     type: String,
     optional: false,
-    max: 20,
-    autoform: {
-      group: 'Question',
-      placeholder: 'How',
-    },
   },
   answers: {
     label: 'Answer Choices',
     type: [Object],
     minCount: 1,
     maxCount: 5,
+  },
+  'answers.$': {
+    label: 'Hello',
     autoform: {
-      group: 'Answer Choices'
-    },
+      afObjectField: {
+        label: 'Hello'
+      }
+    }
   },
   'answers.$.answer': {
     type: String
@@ -36,9 +51,6 @@ export const QuestionSchema = new SimpleSchema({
   },
   'answers.$.isCorrect': {
     type: Boolean,
-  },
-  answerChoice: {
-    type: Number
   }
 });
 

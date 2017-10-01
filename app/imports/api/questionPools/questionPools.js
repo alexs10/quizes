@@ -5,6 +5,7 @@ import { check } from 'meteor/check';
 import { _ } from 'lodash';
 
 export const QuestionPools = new Mongo.Collection('questionPools');
+ const QuestionPoolTime = 20000; //ms
 
 Meteor.methods({
   //todo only return unanswerd questions
@@ -14,21 +15,31 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-    //todo only 50
-    let questions = Questions.find({}).fetch();
+    let questionCount = Math.floor(Math.random() * (2)) + 24;
+    let allQuestions = Questions.find({}).fetch();
+
+    let questions = _.sampleSize(allQuestions, questionCount);
 
     console.log("BAMF")
     console.log(questions);
 
-
-    QuestionPools.insert({
+    const questionPoolId = QuestionPools.insert({
       questions,
       timestamp: new Date(),
       owner: Meteor.userId(),
-      currentQuestion: 0
+      currentQuestion: 0,
+      isDone: false
     });
 
     console.log("BAMF 2")
+    Meteor.setTimeout(() => {
+      console.log('question pool time over');
+        QuestionPools.update(questionPoolId, {
+          $set: { isDone: true }
+        });
+    }, 1*60*1000);
+
+    return questionPoolId;
   },
 
   'questionPools.answer'(questionPoolId, questionId, answerIndex) {
@@ -50,7 +61,18 @@ Meteor.methods({
     })
 
     console.log("updated question");
+  },
 
+  'questionPools.finish'(questionPoolId) {
+    check(questionPoolId, String);
+
+    if (! Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    QuestionPools.update(questionPoolId, {
+      $set: { isDone: true }
+    });
   }
 })
 

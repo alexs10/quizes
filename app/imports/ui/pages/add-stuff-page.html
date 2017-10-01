@@ -1,8 +1,9 @@
 <template name="Add_Stuff_Page">
   {{#If_Logged_In}}
     <div style="padding-top: 20px" class="ui text container">
+      <h1>Add a new question</h1>
       {{> quickForm
-      collection=stuffCollection
+      collection=questionsCollection
       template="semanticUI"
       id="AddStuffForm"
       type="insert"

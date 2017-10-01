@@ -1,0 +1,12 @@
+<template name="Complete">
+  <div class="ui text container">
+    <h1>Quiz Finished</h1>
+    {{#if isQuizComplete}}
+      <h3>You correctly answered {{amountCorrect}} out of {{questionCount}} questions</h3>
+    {{else}}
+      <h3>You correctly answered {{amountCorrect}} questions</h3>
+    {{/if}}
+    <button class="ui button right floated review">Review</button>
+    <button class="ui button right floated new">New Quiz</button>
+  </div>
+</template>

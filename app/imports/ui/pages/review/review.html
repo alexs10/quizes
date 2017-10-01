@@ -1,0 +1,15 @@
+<template name="Review_Page">
+  <div class="ui text container" style="padding-top:40px">
+    {{#with question}}
+      {{>Question_Review question=this qpid=questionPoolId}}
+    {{/with}}
+    {{#if hasPrevious}}
+      <button class="ui button back active">Back</button>
+    {{/if}}
+    {{#if hasNext}}
+      <button class="ui button next active">Next</button>
+    {{else}}
+      <button class="ui button new active">New Quiz</button>
+    {{/if}}
+  </div>
+</template>

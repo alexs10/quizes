@@ -1,0 +1,20 @@
+<template name="Quiz_Page">
+  <div class="ui text container" style="padding-top:40px">
+    {{#if isDone}}
+      {{>Complete questionPool}}
+    {{else}}
+      {{#with question}}
+        {{>Question question=this qpid=questionPoolId}}
+      {{/with}}
+      {{#if hasPrevious}}
+      <button class="ui button back active">Back</button>
+      {{/if}}
+      {{#if hasNext}}
+      <button class="ui button next active">Next</button>
+      {{else}}
+      <button class="ui button finish active">Finish</button>
+      {{/if}}
+
+    {{/if}}
+  </div>
+</template>

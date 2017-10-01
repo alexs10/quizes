@@ -1,13 +1,16 @@
-<template name="Question">
+<template name="Question_Review">
   <div class="ui form">
     <h3>{{question.question}}</h3>
     <div class="grouped fields">
       {{#each augmentedAnswers}}
         <div class="field">
-          <div class="ui checkbox input-ready">
+          <div class="ui checkbox disabled">
             <input type="checkbox" {{isChecked}} class="hidden toggle-checked" name="answer">
             <label>{{answer}}</label>
           </div>
+            <div class="ui {{isCorrect(answer)}} message">
+              <p><i class="icon {{reasonIcon}}"></i>{{reason}}</p>
+            </div>
         </div>
       {{/each}}
     </div>
